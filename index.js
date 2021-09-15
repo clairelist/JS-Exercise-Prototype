@@ -41,9 +41,9 @@ Airplane.prototype.land = function () {
 
 
 
-function Person(atts) {
-  this.name= atts.name,
-  this.age=atts.age,
+function Person(name,age) {
+  this.name= name,
+  this.age=age,
  this.stomach=[]
 }
 
@@ -64,28 +64,17 @@ Person.prototype.toString=function(){
 
 //REMEMBER TO USE A VAR DECLARER LIKE let FOR WHEN MAKING A NEW OBJ CLAIRE CMON!!
 
-let kai=new Person({
-  name: 'Kai',
-  age: 69
+let neo=new Person({
+  name: "Neo",
+  age: 20
 });
 
-// kai.eat('brocoli');
-// kai.eat('chiekn');
-// kai.eat('posta');
-// kai.eat('brocoli');
-// kai.eat('chiekn');
-// kai.eat('posta');
-// kai.eat('brocoli');
-// kai.eat('chiekn');
-// kai.eat('posta');
-// kai.eat('10');
-// kai.eat('does it work');
-// console.log(kai);
+ neo.eat('brocoli');
 
-// kai.poop();
-// console.log(kai);
 
-console.log(kai.toString());
+neo.poop();
+
+console.log(neo.toString());
 
 
 
@@ -103,15 +92,15 @@ console.log(kai.toString());
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car(atts) {
-  this.model= atts.model,
-  this.milesPerGallon=atts.milesPerGallon,
+function Car(model, milesPerGallon) {
+  this.model= model,
+  this.milesPerGallon=milesPerGallon,
  this.tank=0,
  this.odometer=0
 
-this.fill = function (gallons){
-  return this.tank += gallons; //we must use assignment operator += here bc of how objs work
- }
+// this.fill = function (gallons){
+//   return this.tank +=gallons; //we must use assignment operator += here bc of how objs work
+//  }
 
 //  this.drive = function(distance){
 //     for (i=distance; i>0; i--){
@@ -125,17 +114,29 @@ this.fill = function (gallons){
 }
 
 
-let artemis=new Car({
-  model: 'XRD Artemis',
-  milesPerGallon: 40
+Car.prototype.fill = function(gallons){
+  return this.tank +=gallons;
+}
+
+// let artemis=new Car({
+//   model: 'XRD Artemis',
+//   milesPerGallon: 40
  
+// });
+
+// artemis.fill(10);
+
+// //artemis.drive(6900);
+
+// console.log(artemis);
+
+let batmobile=new Car({
+  model: 'BatMobile',
+  milesPerGallon:20
 });
 
-artemis.fill(69);
 
-//artemis.drive(6900);
-
-console.log(artemis);
+batmobile.fill(10);
 
 /*
   TASK 3
@@ -144,9 +145,31 @@ console.log(artemis);
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
- 
+function Baby(name, age, favoriteToy) {
+ Person.call(this, name, age);
+ this.favoriteToy = favoriteToy;
+
 }
+
+Baby.prototype = Object.create(Person.prototype);
+
+Baby.prototype.play=function(){
+  return `Playing with ${this.favoriteToy}`;
+ }
+
+// Baby.prototype=Object.create(Person.prototype);
+
+// let mattie=new Baby({
+//   name: 'mattie',
+//   age: 6,
+//   favoriteToy: 'X-wing Fighter'
+// });
+
+// mattie.eat('babyfood');
+
+// console.log(mattie.play);
+
+// console.log(mattie);
 
 
 /* 
