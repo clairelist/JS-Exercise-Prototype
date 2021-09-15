@@ -39,18 +39,43 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person(name,age) {
-  this.name= name,
-  this.age= age,
-  stomach=[]
+
+
+function Person(atts) {
+  this.name= atts.name,
+  this.age=atts.age,
+ this.stomach=[]
 }
 
-Person.prototype.eat = function(someFood){
-stomach.push(someFood);
-};
+ Person.prototype.eat = function(someFood){
+ this.stomach.push(someFood);
+ if (this.stomach.length>10){
+   this.stomach.pop();
+    }
+ };
 
+ Person.prototype.poop = function(){
+   this.stomach.length=0;
+ }
 
+Person.prototype.toString=function(){
+  return `${this.name}, ${this.age}`;
+}
 
+//REMEMBER TO USE A VAR DECLARER LIKE let FOR WHEN MAKING A NEW OBJ CLAIRE CMON!!
+
+let kai=new Person({
+  name: 'Kai',
+  age: 69
+});
+
+kai.eat('brocoli');
+console.log(kai);
+
+kai.poop();
+console.log(kai);
+
+console.log(kai.toString());
 
 
 
