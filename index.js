@@ -69,11 +69,21 @@ let kai=new Person({
   age: 69
 });
 
-kai.eat('brocoli');
-console.log(kai);
+// kai.eat('brocoli');
+// kai.eat('chiekn');
+// kai.eat('posta');
+// kai.eat('brocoli');
+// kai.eat('chiekn');
+// kai.eat('posta');
+// kai.eat('brocoli');
+// kai.eat('chiekn');
+// kai.eat('posta');
+// kai.eat('10');
+// kai.eat('does it work');
+// console.log(kai);
 
-kai.poop();
-console.log(kai);
+// kai.poop();
+// console.log(kai);
 
 console.log(kai.toString());
 
@@ -93,10 +103,39 @@ console.log(kai.toString());
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-  
+function Car(atts) {
+  this.model= atts.model,
+  this.milesPerGallon=atts.milesPerGallon,
+ this.tank=0,
+ this.odometer=0
+
+this.fill = function (gallons){
+  return this.tank += gallons; //we must use assignment operator += here bc of how objs work
+ }
+
+//  this.drive = function(distance){
+//     for (i=distance; i>0; i--){
+//      return this.tank-=(this.milesPerGallon/this.tank)
+//     }
+//     for (i=0; i<distance; i++){
+//       return this.odometer++;
+//     }
+//  }
+
 }
 
+
+let artemis=new Car({
+  model: 'XRD Artemis',
+  milesPerGallon: 40
+ 
+});
+
+artemis.fill(69);
+
+//artemis.drive(6900);
+
+console.log(artemis);
 
 /*
   TASK 3
@@ -113,10 +152,10 @@ function Baby() {
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. 'this' calls a variable we have access to within scope
+  2. 'this' can be inherited by child objects
+  3. Therefore we use 'this.item' to pass values on to inherited childs
+  4. 'this' acts as a selector 
 */
 
 
